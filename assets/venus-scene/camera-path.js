@@ -1,5 +1,5 @@
-/* Continuous camera path through the first four original Musée views.
- * The fifth (close-up) view is deliberately omitted for the Baile section.
+/* Keep only the opening movement, ending at the second original Musée view.
+ * The remaining views supply the existing curve's control points only.
  */
 (() => {
   'use strict';
@@ -16,10 +16,11 @@
     return b.map((v,axis) => .5*((2*v)+(-a[axis]+c[axis])*u+(2*a[axis]-5*v+4*c[axis]-d[axis])*u2+(-a[axis]+3*v-3*c[axis]+d[axis])*u3));
   }
   // Map scroll distance to curve distance, so the camera does not race between views.
+  const end=1/(positions.length-1),sampleCount=120;
   const samples = [{ t:0, distance:0 }];
   let previous = point(positions,0), length = 0;
-  for (let i=1;i<=360;i++) {
-    const t=i/360, next=point(positions,t);
+  for (let i=1;i<=sampleCount;i++) {
+    const t=end*i/sampleCount, next=point(positions,t);
     length += Math.hypot(...next.map((v,axis)=>v-previous[axis]));
     samples.push({t,distance:length}); previous=next;
   }
