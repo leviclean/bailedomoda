@@ -1,0 +1,5 @@
+{
+  "scene": {"file":"scene.webp","role":"empty photographic scene generated from supplied reference"},
+  "symbol": {"file":"reference.webp","role":"original supplied emblem, displayed as an exact viewport crop"},
+  "layers": [{"id":"subject","file":"subject-v2.webp","role":"new transparent photo supplied by user"},{"id":"title","file":"campaign-title.webp","role":"distressed red title reconstructed from supplied artwork"},{"id":"music-cards","file":"music-cards.png","role":"transparent PNG cutout of two supplied music cards"}]
+}
