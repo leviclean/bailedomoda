@@ -70,6 +70,9 @@
     nativeRAF(waitForModel);
   }, { once: true });
   addEventListener('resize', syncScroll, { passive: true });
+  function reportFailure(){parent.postMessage({type:'baile-venus-error'},parentOrigin);}
+  addEventListener('error',reportFailure);
+  addEventListener('unhandledrejection',reportFailure);
   document.addEventListener('visibilitychange', syncRendering);
   setTimeout(syncRendering, 10500);
 })();
